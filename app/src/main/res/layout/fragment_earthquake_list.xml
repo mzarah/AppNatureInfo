@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:id="@+id/earthquake_parent_layout"
+    android:paddingBottom="7dp"
+    android:paddingTop="7dp">
+
+    <TextView
+        android:id="@+id/textViewMagnitude"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/magnitude_circle"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="Some text"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textViewLocation"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:text="Some text"
+        android:textSize="18sp"
+        android:layout_gravity="center_vertical"/>
+
+    <TextView
+        android:layout_marginStart="20dp"
+        android:id="@+id/textViewTime"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:text="Some text"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:layout_gravity="center_vertical"/>
+
+
+</LinearLayout>
