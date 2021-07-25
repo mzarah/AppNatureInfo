@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +21,8 @@ import kotlinx.android.synthetic.main.fragment_earthquake.*
 class EarthquakeFragment : Fragment() {
 
 
+    private val earthquakeAdapter: EarthquakeAdapter? = EarthquakeAdapter()
+    private var viewModel: EarthquakeViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +40,29 @@ class EarthquakeFragment : Fragment() {
 
     }
 
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        earthquakeRecycler.adapter = earthquakeAdapter
+        earthquakeRecycler.layoutManager = LinearLayoutManager(context)
+
+        val repository = Repository()
+        val viewModelFactory = EarthquakeViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(EarthquakeViewModel::class.java)
+
+        viewModel!!.getEarthquake()
+
+        viewModel!!.earthquakeResponse.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            if (it.isSuccessful) {
+                it.body()?.features.let { it -> earthquakeAdapter?.setData(it) }
+            } else {
+                Log.d("ERROR", it.errorBody().toString())
+                Toast.makeText(context, it.code().toString(), Toast.LENGTH_SHORT).show()
+            }
+        }
+        )
+    }
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
