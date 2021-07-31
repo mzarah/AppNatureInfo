@@ -1,12 +1,16 @@
 package com.hfad.appnatureinfo
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -36,8 +40,6 @@ class EarthquakeFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_earthquake, container, false)
 
-
-
     }
 
 
@@ -53,15 +55,19 @@ class EarthquakeFragment : Fragment() {
 
         viewModel!!.getEarthquake()
 
-        viewModel!!.earthquakeResponse.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+        viewModel!!.earthquakeResponse.observe(viewLifecycleOwner, {
             if (it.isSuccessful) {
-                it.body()?.features.let { it -> earthquakeAdapter?.setData(it) }
+                it.body()?.features.let { earthquakeAdapter?.setData(it) }
             } else {
                 Log.d("ERROR", it.errorBody().toString())
                 Toast.makeText(context, it.code().toString(), Toast.LENGTH_SHORT).show()
             }
+
+
         }
         )
+
+
     }
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
