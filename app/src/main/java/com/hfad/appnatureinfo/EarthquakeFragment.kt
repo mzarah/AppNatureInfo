@@ -1,5 +1,7 @@
 package com.hfad.appnatureinfo
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +17,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.hfad.appnatureinfo.adapter.EarthquakeAdapter
+import com.hfad.appnatureinfo.repository.NetworkState
+import com.hfad.appnatureinfo.repository.NetworkState.Companion.LOADING
 import com.hfad.appnatureinfo.repository.Repository
 import kotlinx.android.synthetic.main.fragment_earthquake.*
 
@@ -43,6 +47,7 @@ class EarthquakeFragment : Fragment() {
     }
 
 
+    @SuppressLint("ResourceAsColor")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -62,10 +67,20 @@ class EarthquakeFragment : Fragment() {
                 Log.d("ERROR", it.errorBody().toString())
                 Toast.makeText(context, it.code().toString(), Toast.LENGTH_SHORT).show()
             }
+        })
 
+        loadingBar.indeterminateDrawable.setTint(R.color.magnitude2)
+        viewModel!!.networkState.observe(viewLifecycleOwner, {
+            if (it == LOADING) {
+                loadingBar.visibility = View.VISIBLE
+                earthquakeRecycler.visibility = View.GONE
+            }
+            else {
+                loadingBar.visibility = View.GONE
+                earthquakeRecycler.visibility = View.VISIBLE
+            }
 
-        }
-        )
+        })
 
 
     }

@@ -6,10 +6,17 @@
     tools:context=".EarthquakeFragment"
     android:background="@color/colorBackground">
 
-    <!-- TODO: Update blank fragment layout -->
+   <ProgressBar
+       android:id="@+id/loadingBar"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_gravity="center"
+       android:visibility="visible"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/earthquakeRecycler"/>
+        android:id="@+id/earthquakeRecycler"
+        android:visibility="gone"/>
 
 </FrameLayout>
