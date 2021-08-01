@@ -36,7 +36,7 @@ class EarthquakeAdapter: RecyclerView.Adapter<EarthquakeAdapter.MyViewHolder>() 
     }
 
 
-    @SuppressLint("SimpleDateFormat")
+    @SuppressLint("SimpleDateFormat", "CutPasteId")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
 
@@ -60,6 +60,15 @@ class EarthquakeAdapter: RecyclerView.Adapter<EarthquakeAdapter.MyViewHolder>() 
 
         holder.itemView.findViewById<TextView>(R.id.textViewTime).text = formattedDate
 
+        val magnitude = earthquakeList?.get(
+                position
+        )?.properties?.mag!!.toDouble()
+
+        val backgroudRsrc = getMagnitudeColor(magnitude)
+
+       holder.itemView.findViewById<TextView>(R.id.textViewMagnitude).setBackgroundResource(backgroudRsrc)
+
+
     }
 
     fun setData(newList: List<Feature>?){
@@ -73,14 +82,14 @@ class EarthquakeAdapter: RecyclerView.Adapter<EarthquakeAdapter.MyViewHolder>() 
 
             magnitudeColorResourceId = when (magnitudeFloor) {
                 //  1 -> magnitudeColorResourceId = R.color.magnitude1;
-                1 -> R.color.magnitude8
-                3 -> R.color.magnitude2
-                4 -> R.color.magnitude4
-                6 -> R.color.magnitude5
-                7 -> R.color.magnitude7
-                8 -> R.color.magnitude8
+                0,1,2 -> R.drawable.magnitude_circle
+                3 -> R.drawable.magnitude_circle3
+                4,5 -> R.drawable.magnitude_circle4
+                6 -> R.drawable.magnitude_circle6
+                7 -> R.drawable.magnitude_circle7
+                8 -> R.drawable.magnitude_circle8
                 else -> {
-                    R.color.magnitude8
+                    R.drawable.magnitude_circle8
                 }
             }
 

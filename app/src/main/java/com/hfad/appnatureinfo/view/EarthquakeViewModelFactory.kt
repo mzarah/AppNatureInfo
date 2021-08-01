@@ -1,4 +1,4 @@
-package com.hfad.appnatureinfo
+package com.hfad.appnatureinfo.view
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

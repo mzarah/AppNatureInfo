@@ -1,4 +1,4 @@
-package com.hfad.appnatureinfo
+package com.hfad.appnatureinfo.view
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
