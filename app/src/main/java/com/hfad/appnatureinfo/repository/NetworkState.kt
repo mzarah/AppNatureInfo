@@ -13,9 +13,4 @@ companion object {
     var ERROR: NetworkState =  NetworkState(Status.FAILED, "Something went wrong")
 }
 
-//    init {
-//        LOADED = NetworkState(Status.SUCCESS, "Success")
-//        LOADING = NetworkState(Status.RUNNING, "Running")
-//        ERROR = NetworkState(Status.FAILED, "Something went wrong")
-//    }
 }

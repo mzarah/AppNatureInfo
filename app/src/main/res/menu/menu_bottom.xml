@@ -16,15 +16,8 @@
         android:icon="@drawable/ic_flood"
         app:cnb_iconColor="@color/white"
         app:cnb_textColor="@color/white"
-        android:title="@string/flood"
+        android:title="@string/disasters"
         app:cnb_backgroundColor="@color/colorAccent"/>
 
-    <item
-        android:id="@+id/statistics"
-        android:icon="@drawable/ic_statistics"
-        app:cnb_iconColor="@color/white"
-        app:cnb_textColor="@color/white"
-        android:title="@string/statistics"
-        app:cnb_backgroundColor="@color/colorAccent"/>
 
 </menu>

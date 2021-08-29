@@ -10,19 +10,26 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hfad.appnatureinfo.R
+import com.hfad.appnatureinfo.adapter.DisasterAdapter
 import com.hfad.appnatureinfo.adapter.EarthquakeAdapter
+import com.hfad.appnatureinfo.repository.DisasterRepository
 import com.hfad.appnatureinfo.repository.NetworkState.Companion.LOADING
 import com.hfad.appnatureinfo.repository.EarthquakeRepository
+import com.hfad.appnatureinfo.viewmodel.DisasterViewModel
+import com.hfad.appnatureinfo.viewmodel.DisasterViewModelFactory
 import com.hfad.appnatureinfo.viewmodel.EarthquakeViewModel
 import com.hfad.appnatureinfo.viewmodel.EarthquakeViewModelFactory
+import kotlinx.android.synthetic.main.fragment_disasters.*
 import kotlinx.android.synthetic.main.fragment_earthquake.*
+import kotlinx.android.synthetic.main.fragment_earthquake.earthquakeRecycler
+import kotlinx.android.synthetic.main.fragment_earthquake.loadingBar
 
 
-class EarthquakeFragment : Fragment() {
+class DisasterFragment : Fragment() {
 
 
-    private val earthquakeAdapter: EarthquakeAdapter? = EarthquakeAdapter()
-    private var viewModel: EarthquakeViewModel? = null
+    private val disasterAdapter: DisasterAdapter? = DisasterAdapter()
+    private var viewModel: DisasterViewModel? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,38 +43,39 @@ class EarthquakeFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_earthquake, container, false)
+        return inflater.inflate(R.layout.fragment_disasters, container, false)
     }
 
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        earthquakeRecycler.adapter = earthquakeAdapter
-        earthquakeRecycler.layoutManager = LinearLayoutManager(context)
+        disasterRecycler.adapter = disasterAdapter
+        disasterRecycler.layoutManager = LinearLayoutManager(context)
 
-        val repository = EarthquakeRepository()
-        val viewModelFactory = EarthquakeViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(EarthquakeViewModel::class.java)
+        val repository = DisasterRepository()
+        val viewModelFactory = DisasterViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(DisasterViewModel::class.java)
 
-        viewModel!!.getEarthquake()
+        viewModel!!.getDisaster()
 
-        viewModel!!.earthquakeResponse.observe(viewLifecycleOwner, {
+        viewModel!!.disasterResponse.observe(viewLifecycleOwner, {
             if (it.isSuccessful) {
-                it.body()?.features.let { earthquakeAdapter?.setData(it) }
+                it.body()?.disasterDeclarationsSummaries.let { disasterAdapter?.setData(it) }
             } else {
                 Log.d("ERROR", it.errorBody().toString())
                 Toast.makeText(context, it.code().toString(), Toast.LENGTH_SHORT).show()
             }
         })
 
+
         viewModel!!.networkState.observe(viewLifecycleOwner, {
             if (it == LOADING) {
                 loadingBar.visibility = View.VISIBLE
-                earthquakeRecycler.visibility = View.GONE
+                disasterRecycler.visibility = View.GONE
             } else {
                 loadingBar.visibility = View.GONE
-                earthquakeRecycler.visibility = View.VISIBLE
+                disasterRecycler.visibility = View.VISIBLE
             }
 
         })

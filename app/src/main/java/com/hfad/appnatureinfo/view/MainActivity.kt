@@ -27,8 +27,7 @@ class MainActivity : AppCompatActivity() {
             override fun onItemSelected(id: Int) {
                 when (id) {
                     R.id.earthquake -> fragment = EarthquakeFragment()
-                    R.id.flood -> fragment = FloodsFragment()
-                    R.id.statistics -> fragment = StatisticsFragment()
+                    R.id.flood -> fragment = DisasterFragment()
                 }
                     manager = supportFragmentManager
                     manager!!.beginTransaction().replace(R.id.fragment_container, fragment).commit()

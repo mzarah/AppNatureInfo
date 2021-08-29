@@ -82,7 +82,6 @@ class EarthquakeAdapter: RecyclerView.Adapter<EarthquakeAdapter.MyViewHolder>() 
 
 
             magnitudeColorResourceId = when (magnitudeFloor) {
-                //  1 -> magnitudeColorResourceId = R.color.magnitude1;
                 in -999..2 -> R.drawable.magnitude_circle
                 3 -> R.drawable.magnitude_circle3
                 4,5 -> R.drawable.magnitude_circle4
