@@ -13,6 +13,8 @@ import com.hfad.appnatureinfo.R
 import com.hfad.appnatureinfo.adapter.EarthquakeAdapter
 import com.hfad.appnatureinfo.repository.NetworkState.Companion.LOADING
 import com.hfad.appnatureinfo.repository.Repository
+import com.hfad.appnatureinfo.viewmodel.EarthquakeViewModel
+import com.hfad.appnatureinfo.viewmodel.EarthquakeViewModelFactory
 import kotlinx.android.synthetic.main.fragment_earthquake.*
 
 

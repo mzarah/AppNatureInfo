@@ -80,9 +80,10 @@ class EarthquakeAdapter: RecyclerView.Adapter<EarthquakeAdapter.MyViewHolder>() 
             val magnitudeColorResourceId: Int
             val magnitudeFloor: Int = floor(magnitude).toInt()
 
+
             magnitudeColorResourceId = when (magnitudeFloor) {
                 //  1 -> magnitudeColorResourceId = R.color.magnitude1;
-                0,1,2 -> R.drawable.magnitude_circle
+                in -999..2 -> R.drawable.magnitude_circle
                 3 -> R.drawable.magnitude_circle3
                 4,5 -> R.drawable.magnitude_circle4
                 6 -> R.drawable.magnitude_circle6

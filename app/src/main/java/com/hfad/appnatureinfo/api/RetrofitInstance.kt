@@ -16,6 +16,9 @@ object RetrofitInstance {
             .build()
     }
 
+
+
+
     val api: EarthquakeApi by lazy {
         retrofit.create(EarthquakeApi::class.java)
     }
