@@ -50,13 +50,13 @@ class DisasterAdapter: RecyclerView.Adapter<DisasterAdapter.MyViewHolder>() {
 
         holder.itemView.findViewById<TextView>(R.id.textViewDate).text = disasterList?.get(
                 position
-        )?.incidentBeginDate
+        )?.incidentBeginDate!!.split("T")[0]
 
 
 
         val backgroudRsrc = getTypeColor(disasterList!!.get(
                 position
-        )?.incidentType)
+        ).incidentType)
 
        holder.itemView.findViewById<TextView>(R.id.textViewType).setBackgroundResource(backgroudRsrc)
 
@@ -75,6 +75,10 @@ class DisasterAdapter: RecyclerView.Adapter<DisasterAdapter.MyViewHolder>() {
                 "Flood" -> R.drawable.flood
                 "Fire" -> R.drawable.fire
                 "Tornado" -> R.drawable.tornado
+                "Severe Storm(s)" -> R.drawable.severe
+                "Earthquake" -> R.drawable.earthquake
+                "Hurricane" -> R.drawable.hurricane
+                "Drought" -> R.drawable.drought
                 else -> {
                     R.drawable.flood
                 }
