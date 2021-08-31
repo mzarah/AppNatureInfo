@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:gravity="center_horizontal"
     android:id="@+id/earthquake_parent_layout"
     android:paddingBottom="7dp"
     android:paddingTop="7dp"
@@ -14,11 +15,11 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_gravity="center"
         android:text="Some text"
         android:textSize="20sp"
         android:layout_marginHorizontal="10dp"
-        android:gravity="center"/>
+        android:layout_gravity="left"
+        tools:ignore="RtlHardcoded" />
 
     <TextView
         android:id="@+id/textViewDate"
@@ -26,9 +27,9 @@
         android:layout_height="wrap_content"
         android:text="Some text"
         android:textSize="18sp"
-        android:layout_gravity="center"
         android:layout_marginStart="20dp"
-        android:gravity="center"/>
+        android:layout_gravity="left"
+        tools:ignore="RtlHardcoded" />
 
     <TextView
         android:id="@+id/textViewType"
@@ -41,7 +42,7 @@
         android:textSize="18sp"
         tools:ignore="RtlCompat"
         android:layout_marginStart="20dp"
-        android:gravity="center" />
+        android:gravity="center_horizontal" />
 
 
 </LinearLayout>

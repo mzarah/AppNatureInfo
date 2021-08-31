@@ -8,12 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.hfad.appnatureinfo.R
 import com.hfad.appnatureinfo.model.DisasterDeclarationsSummary
-import com.hfad.appnatureinfo.model.Feature
-import java.text.SimpleDateFormat
-import java.util.*
-import kotlin.math.floor
-import kotlin.math.round
-import kotlin.math.truncate
 
 
 class DisasterAdapter: RecyclerView.Adapter<DisasterAdapter.MyViewHolder>() {
@@ -69,9 +63,8 @@ class DisasterAdapter: RecyclerView.Adapter<DisasterAdapter.MyViewHolder>() {
     }
 
         fun getTypeColor(type: String): Int {
-            val typeColorResourceId: Int
 
-            typeColorResourceId = when (type) {
+            return when (type) {
                 "Flood" -> R.drawable.flood
                 "Fire" -> R.drawable.fire
                 "Tornado" -> R.drawable.tornado
@@ -83,8 +76,6 @@ class DisasterAdapter: RecyclerView.Adapter<DisasterAdapter.MyViewHolder>() {
                     R.drawable.flood
                 }
             }
-
-            return typeColorResourceId
         }
 
 
