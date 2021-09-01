@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.hfad.appnatureinfo.R
 import com.hfad.appnatureinfo.model.DisasterDeclarationsSummary
+import java.util.Collections.emptyList
 
 
 class DisasterAdapter: RecyclerView.Adapter<DisasterAdapter.MyViewHolder>() {
@@ -72,6 +73,9 @@ class DisasterAdapter: RecyclerView.Adapter<DisasterAdapter.MyViewHolder>() {
                 "Earthquake" -> R.drawable.earthquake
                 "Hurricane" -> R.drawable.hurricane
                 "Drought" -> R.drawable.drought
+                "Toxic Substances" -> R.drawable.toxic
+                "Typhoon" -> R.drawable.typhoon
+                "Other" -> R.drawable.other
                 else -> {
                     R.drawable.flood
                 }
