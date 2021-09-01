@@ -75,9 +75,10 @@ class DisasterAdapter: RecyclerView.Adapter<DisasterAdapter.MyViewHolder>() {
                 "Drought" -> R.drawable.drought
                 "Toxic Substances" -> R.drawable.toxic
                 "Typhoon" -> R.drawable.typhoon
+                "Dam/Levee Break" -> R.drawable.severe
                 "Other" -> R.drawable.other
                 else -> {
-                    R.drawable.flood
+                    R.drawable.other
                 }
             }
         }
